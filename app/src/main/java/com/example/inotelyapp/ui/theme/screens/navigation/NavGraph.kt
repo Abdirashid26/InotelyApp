@@ -24,7 +24,7 @@ fun NavGraph(
         mutableStateOf(Screen.GetStarted.route)
     }
 
-    var user  = firebaseViewModel.userLiveData?.observeAsState()
+    val user  = firebaseViewModel.userLiveData?.observeAsState()
 
 
     if (user?.value?.email != null){
@@ -61,8 +61,11 @@ fun NavGraph(
         composable(
             route = Screen.Main.route
         ){
+
                 MainScreen(navHostController = navHostController)
         }
+
+
 
 
     }

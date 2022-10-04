@@ -2,12 +2,15 @@ package com.example.inotelyapp.ui.theme.screens.mainScreen
 
 import android.graphics.Paint.Align
 import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -44,6 +47,7 @@ fun MainScreenContent(
 
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DisplayNotes(
     firebaseViewModel: FirebaseViewModel = hiltViewModel()
@@ -61,7 +65,31 @@ fun DisplayNotes(
     }
 
 
-    StaggeredVerticalGrid(maxColumnWidth = 200.dp) {
+    LazyVerticalStaggeredGrid(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFF8EEE2))
+            .padding(5.dp),
+        columns = StaggeredGridCells.Fixed(2)
+    ){
+        items(
+            count = notesLists.value?.toList()?.size!!
+        ){
+            notesLists.value?.toList()?.forEach {
+                    note ->
+                NoteCard(
+                    title = note.title,
+                    descripiton = note.description
+                )
+            }
+        }
+
+    }
+
+
+    StaggeredVerticalGrid(maxColumnWidth = 200.dp, modifier = Modifier
+        .fillMaxSize()
+        .background(Color(0xFFF8EEE2))) {
         notesLists.value?.toList()?.forEach {
                 note ->
             NoteCard(
@@ -134,7 +162,7 @@ fun DisplayNoNotes(){
             Spacer(modifier = Modifier.size(10.dp))
 
             Text(
-                text ="Add a note about anything (your thoughts on climate change, or your history essay) and share it witht the world.",
+                text ="Add a note about anything (your thoughts on climate change, or your history essay) and share it with the world.",
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.numedium)),
                     fontSize = MaterialTheme.typography.body1.fontSize,

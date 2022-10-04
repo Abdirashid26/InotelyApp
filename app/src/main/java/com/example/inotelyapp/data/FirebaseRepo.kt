@@ -49,6 +49,7 @@ class FirebaseRepo ()
 
     fun logOutUser (){
         firebaseAuth.signOut()
+        userLiveData.postValue(null)
         loggedOutLiveData.postValue(true)
     }
 

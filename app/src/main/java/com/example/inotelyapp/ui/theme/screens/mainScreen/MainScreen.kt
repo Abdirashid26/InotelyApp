@@ -36,7 +36,7 @@ fun MainScreen(
     
     Scaffold(
         topBar = {
-            MainScreenTopAppBar()
+            MainScreenTopAppBar(navHostController = navHostController)
         },
         content = {
             MainScreenContent()

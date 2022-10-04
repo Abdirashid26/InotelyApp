@@ -1,7 +1,9 @@
 package com.example.inotelyapp.ui.theme.screens.mainScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Dp
 import kotlin.math.ceil
@@ -14,7 +16,7 @@ fun StaggeredVerticalGrid(
     children: @Composable () -> Unit
 ) {
     Layout(
-        modifier = modifier,
+        modifier = modifier.background(Color(0xFFF8EEE2)),
         content = children
     ) { measurables, constraints ->
         check(constraints.hasBoundedWidth) {
@@ -35,7 +37,7 @@ fun StaggeredVerticalGrid(
             ?: constraints.minHeight
         layout(
             width = constraints.maxWidth,
-            height = height
+            height = height,
         ) {
             val colY = IntArray(columns) { 0 }
             placeables.forEach { placeable ->
