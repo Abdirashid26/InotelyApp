@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1087390875519",
+    "project_id": "inotely",
+    "storage_bucket": "inotely.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087390875519:android:183f0a9292f35ae237244a",
+        "android_client_info": {
+          "package_name": "com.inotely.compose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087390875519-3ppgm6ir2egak16t0n3r510k8rquae0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAcCNvv7eRkcWSVhs0xNl0s9NwJHOuuQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087390875519-3ppgm6ir2egak16t0n3r510k8rquae0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
