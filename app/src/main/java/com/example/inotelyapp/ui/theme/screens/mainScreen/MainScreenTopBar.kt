@@ -1,5 +1,6 @@
 package com.example.inotelyapp.ui.theme.screens.mainScreen
 
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -54,11 +56,17 @@ fun MainScreenTopAppBar(
                         contentDescription = "Log Out",
                         tint = Color.Black
                     )
-                    
+
+                    val activity = (LocalContext.current as? Activity)
+
+
+
                     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                         DropdownMenuItem(onClick = {
                             firebaseViewModel.logOutUser()
-                            navHostController.popBackStack()
+                            expanded = false
+                            activity?.finish()
+
                         }) {
                             Text(
                                 text = "Log Out"

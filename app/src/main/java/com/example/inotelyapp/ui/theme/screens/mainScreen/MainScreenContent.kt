@@ -6,11 +6,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -72,32 +70,35 @@ fun DisplayNotes(
             .padding(5.dp),
         columns = StaggeredGridCells.Fixed(2)
     ){
+
         items(
-            count = notesLists.value?.toList()?.size!!
-        ){
-            notesLists.value?.toList()?.forEach {
-                    note ->
-                NoteCard(
-                    title = note.title,
-                    descripiton = note.description
-                )
+            items = notesLists.value?.toList()!!,
+            key = {
+                note ->
+                note.title
             }
-        }
-
-    }
-
-
-    StaggeredVerticalGrid(maxColumnWidth = 200.dp, modifier = Modifier
-        .fillMaxSize()
-        .background(Color(0xFFF8EEE2))) {
-        notesLists.value?.toList()?.forEach {
+        ){
                 note ->
             NoteCard(
                 title = note.title,
                 descripiton = note.description
             )
+
         }
+
     }
+
+
+//    StaggeredVerticalGrid(maxColumnWidth = 200.dp, modifier = Modifier
+//        .background(Color(0xFFF8EEE2))) {
+//        notesLists.value?.toList()?.forEach {
+//                note ->
+//            NoteCard(
+//                title = note.title,
+//                descripiton = note.description
+//            )
+//        }
+//    }
 
 
 //    LazyVerticalGrid(
